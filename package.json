@@ -1,17 +1,48 @@
 {
   "name": "autonomous-multiagent-workflow-engine",
-  "description": "Self-directed workflow engine for complex multi-agent collaborations",
   "version": "1.0.0",
+  "description": "Self-directed workflow engine for complex multi-agent collaborations: capability-based task allocation, retries with exponential backoff, skip-and-cascade failure policies, event-sourced history, and durable JSON snapshots with an HTTP control server.",
   "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
   "scripts": {
-    "test": "bun test",
-    "build": "tsc"
+    "prepare": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/cli.js",
+    "test": "bun test"
   },
-  "dependencies": {
-    "commander": "^11.1.0"
+  "keywords": [
+    "agents",
+    "multi-agent",
+    "workflow",
+    "orchestration",
+    "task-allocation",
+    "scheduler",
+    "retry",
+    "event-sourcing"
+  ],
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.17.0"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Retsumdk/autonomous-multiagent-workflow-engine.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Retsumdk/autonomous-multiagent-workflow-engine/issues"
+  },
+  "homepage": "https://github.com/Retsumdk/autonomous-multiagent-workflow-engine#readme",
   "devDependencies": {
-    "bun-types": "^1.0.0",
-    "typescript": "^5.3.0"
+    "@types/bun": "^1.4.3",
+    "typescript": "^5.9.0"
   }
 }

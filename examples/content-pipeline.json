@@ -1,0 +1,10 @@
+{
+  "name": "content-pipeline",
+  "tasks": [
+    { "id": "research", "requires": ["research"] },
+    { "id": "draft", "requires": ["writing"], "dependsOn": ["research"] },
+    { "id": "fact-check", "requires": ["verification"], "dependsOn": ["research"], "maxAttempts": 3, "failurePolicy": "retry" },
+    { "id": "review", "requires": ["writing", "verification"], "dependsOn": ["draft", "fact-check"] },
+    { "id": "publish", "requires": ["writing"], "dependsOn": ["review"] }
+  ]
+}

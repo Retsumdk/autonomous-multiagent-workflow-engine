@@ -1,0 +1,27 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+      - run: bun install
+      - run: bun test
+      - run: bunx tsc -p tsconfig.test.json --noEmit
+      - run: bunx tsc -p tsconfig.json
+      - name: Node smoke test
+        run: |
+          node dist/cli.js validate examples/content-pipeline.json
+          node dist/cli.js run examples/content-pipeline.json --agents examples/content-pipeline-agents.json

@@ -1,0 +1,5 @@
+[
+  { "id": "researcher", "capabilities": ["research"] },
+  { "id": "writer", "capabilities": ["writing", "publishing"] },
+  { "id": "verifier", "capabilities": ["verification", "writing"] }
+]
